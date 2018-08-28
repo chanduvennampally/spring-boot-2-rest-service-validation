@@ -36,10 +36,9 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
   @Override
   protected ResponseEntity<Object> handleTypeMismatch(TypeMismatchException ex, HttpHeaders headers,
 			HttpStatus status, WebRequest request) {
-	    ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), "ARGUMENTS Failed",
-	            "TEST");
+	    ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), "ARGUMENTS NOT VALID",
+	            ex.getRequiredType().toString() + " type Required");
 	        return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
-
 	}
 	
   @Override
