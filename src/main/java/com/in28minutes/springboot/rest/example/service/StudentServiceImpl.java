@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.in28minutes.springboot.rest.example.exception.StudentNotFoundException;
@@ -31,15 +32,14 @@ public class StudentServiceImpl implements StudentService {
 		if (!student.isPresent())
 			throw new StudentNotFoundException("id-" + id);
 		Resource<Student> resource = new Resource<Student>(student.get());
-
 		return resource;
 
 	}
 
 	@Override
 	public void deleteById(Long id) {
-	throw new OutOfMemoryError();
-		//studentRepository.deleteById(id);
+//	throw new OutOfMemoryError();
+		studentRepository.deleteById(id);
 	}
 
 	@Override

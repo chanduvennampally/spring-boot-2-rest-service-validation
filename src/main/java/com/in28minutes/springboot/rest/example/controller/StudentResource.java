@@ -30,7 +30,7 @@ public class StudentResource {
 	}
 
 	@GetMapping("/students/{id}")
-	public Resource<Student> retrieveStudent(@PathVariable long id) {
+	public Resource<Student> retrieveStudent(@Valid @PathVariable long id) {
 		return studentService.findById(id);
 	}
 
